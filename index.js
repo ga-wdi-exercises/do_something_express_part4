@@ -1,25 +1,20 @@
 var express = require("express");
 var app = express();
 var path = require("path");
+var bodyParser = require("body-parser");
 
-var Sequelize = require("sequelize");
-var sql = new Sequelize("postgres://robertthomas:a:5432/do_something");
-
+app.use(bodyParser.json())
 app.use("/app", express.static(path.join(__dirname + "/app")));
+
+var listsController = require("./app/controllers/listsController");
 
 app.get("/", function(request, response){
   response.sendFile(__dirname + "/app/views/index.html");
 });
 
-app.get("/lists", function(request, response){
-  sql.sync().then(function(){
+app.get("/lists", listsController.index);
 
-  });
-});
-
-app.post("/lists", function(request, response){
-  // Create new list
-});
+app.post("/lists", listsController.create);
 
 app.get("/lists/:id", function(request, response){
   // Show list
