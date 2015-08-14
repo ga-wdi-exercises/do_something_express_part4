@@ -5,10 +5,6 @@ var path = require("path");
 var Sequelize = require("sequelize");
 var sql = new Sequelize("postgres://robertthomas:a:5432/do_something");
 
-var List = sql.define("List", {
-  title: Sequelize.STRING
-});
-
 app.use("/app", express.static(path.join(__dirname + "/app")));
 
 app.get("/", function(request, response){
@@ -17,11 +13,7 @@ app.get("/", function(request, response){
 
 app.get("/lists", function(request, response){
   sql.sync().then(function(){
-    return List.create({
-      title: "Hello"
-    });
-  }).then(function(list){
-    list.get({plain: true})
+
   });
 });
 
