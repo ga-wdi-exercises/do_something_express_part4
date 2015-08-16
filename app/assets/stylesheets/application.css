@@ -1,0 +1,69 @@
+*{
+  margin:0;
+  border:0;
+  padding:0;
+  border-collapse:collapse;
+  border-spacing:0;
+  font-size:inherit;
+  font-style:inherit;
+  font-family:inherit;
+  font-weight:inherit;
+  text-decoration:none;
+  color:inherit;
+  background-color:transparent;
+  list-style-type:none;
+  box-sizing:border-box;
+}
+*:focus{
+  outline:0
+}
+body,html{
+  width:100%;
+  position:relative;
+  font-family:"Helvetica Neue", Helvetica, sans-serif;
+  font-size:12px;
+  line-height:20px;
+}
+html{
+  height:100%;
+}
+body{
+  min-height:100%;
+}
+div{
+  position:relative;
+}
+a, button, label{
+  cursor:pointer;
+}
+
+input[type=text], textarea, button{
+  display:block;
+  border:1px solid #ccc;
+  border-radius:2px;
+  width:100%;
+}
+button{
+  text-align:center;
+}
+
+.list{
+  display:inline-block;
+  width:300px;
+  height:300px;
+  overflow-y:scroll;
+  margin:10px;
+  border:1px solid #ddd;
+  border-radius:5px;
+  padding:10px;
+}
+.list textarea,
+.list button{
+  margin-top:10px;
+}
+.list.pending button{
+  background-color:#ccc;
+}
+.list.new button.delete{
+  display:none;
+}

@@ -1,3 +1,5 @@
+var Task = require("../models/task");
+
 module.exports = {
 
   index: function(request, response){
@@ -5,7 +7,9 @@ module.exports = {
   },
 
   create: function(request, response){
-
+    Task.create(request.body).then(function(db_response){
+      response.send(db_response);
+    });
   },
 
   show: function(request, response){
