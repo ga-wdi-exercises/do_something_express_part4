@@ -3,7 +3,7 @@
   <head>
     <title>Do Something</title>
     <link rel="stylesheet" href="/app/assets/stylesheets/application.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://localhost/lib/jquery.js"></script>
     <script src="/app/assets/javascripts/application.js"></script>
   </head>
   <body>
@@ -11,7 +11,7 @@
     <main id="lists">
       <div id="listTemplate">
         <div class="list new">
-          <div><input type="text" /></div>
+          <div><input type="text" value="{{{title}}}"/></div>
           <ul>
             <li id="taskTemplate" class="task">
               <textarea type="text"></textarea>
