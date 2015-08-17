@@ -39,9 +39,9 @@ module.exports = {
   delete: function(request, response){
     List.findById(request.params.id).then(function(list){
       if(!list) return error.call(response, "not found");
-      list.destroy().then(response.send(function(db_response){
-        response.send(db_response);
-      }));
+      list.destroy().then(function(db_response){
+        response.send(db_response)
+      });
     })
   }
 

@@ -29,6 +29,7 @@ html{
 }
 body{
   min-height:100%;
+  background-color:#f3f3f3;
 }
 div{
   position:relative;
@@ -37,13 +38,21 @@ a, button, label{
   cursor:pointer;
 }
 
-input[type=text], textarea, button{
-  display:block;
-  border:1px solid #ccc;
-  border-radius:2px;
-  width:100%;
+h1,h2{
+  font-weight:bold;
+  text-align:center;
 }
-button{
+h1{
+  font-size:48px;
+  line-height:96px;
+  color:#345;
+}
+h2{
+  font-size:24px;
+  line-height:36px;
+  color:#789;
+}
+main{
   text-align:center;
 }
 
@@ -56,18 +65,50 @@ button{
   border:1px solid #ddd;
   border-radius:5px;
   padding:10px;
+  font-size:0;
+  background-color:#ffeedd;
+  box-shadow:0px 0px 20px 0px #ccc;
 }
-.list textarea,
-.list button{
-  margin-top:10px;
+.task{
+  font-size:0;
+  margin:10px auto;
 }
-.list.pending button{
-  background-color:#ccc;
+input[type=text], textarea, button{
+  display:block;
+  border:1px solid #ddccaa;
+  border-radius:2px;
+  width:100%;
+  font-size:1rem;
 }
-.list.new button.delete,
-.list.new button.edit{
-  display:none;
+input[type=text], textarea{
+  padding:1px 3px;
+  border-bottom-left-radius:0px;
+  border-bottom-right-radius:0px;
+  border-bottom-color:transparent;
+  background-color:#fff9f0;
+  color:#333;
 }
-.list.current button.create{
-  display:none;
+input[type=text]{
+  font-weight:bold;
+  text-align:center;
+}
+textarea{
+  resize: vertical;
+}
+button{
+  text-align:center;
+  border-top-left-radius:0px;
+  border-top-right-radius:0px;
+  color:#998877;
+}
+button:not(.create){
+  display:inline-block;
+  width:50%;
+}
+button:not(.create):nth-of-type(odd){
+  border-bottom-right-radius:0px;
+  border-right-color:transparent;
+}
+button:not(.create):nth-of-type(even){
+  border-bottom-left-radius:0px;
 }
