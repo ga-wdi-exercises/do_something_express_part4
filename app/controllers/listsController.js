@@ -1,9 +1,5 @@
 var List = require("../models/list");
 
-function sendBack(db_response){
-  this.send(db_response);
-}
-
 function error(message){
   this.status(500);
   this.send(JSON.stringify({
@@ -14,28 +10,28 @@ function error(message){
 module.exports = {
 
   index: function(request, response){
-    List.findAll({order: "id"}).then(sendBack.bind(response));
+    List.findAll({order: "id"}).then(response.send(db_response));
   },
 
   create: function(request, response){
-    List.create(request.body).then(sendBack.bind(response));
+    List.create(request.body).then(response.send(db_response));
   },
 
   show: function(request, response){
-    List.findById(request.params.id).then(sendBack.bind(response));
+    List.findById(request.params.id).then(response.send(db_response));
   },
 
   edit: function(request, response){
     List.findById(request.params.id).then(function(list){
       if(!list) return error.call(response, "not found");
-      list.updateAttributes(request.body).then(sendBack.bind(response));
+      list.updateAttributes(request.body).then(response.send(db_response));
     })
   },
 
   delete: function(request, response){
     List.findById(request.params.id).then(function(list){
       if(!list) return error.call(response, "not found");
-      list.destroy().then(sendBack.bind(response));
+      list.destroy().then(response.send(db_response));
     })
   }
 
