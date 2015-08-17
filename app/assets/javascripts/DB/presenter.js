@@ -16,13 +16,16 @@ function DB(modelName, apiPath, templateSelector){
   DBModel.call(DB, apiPath);
 
   DB.all = {}
-  DB.name = modelName;
+  DB.modelName = modelName;
   DB.fields = function(){
     var fields = DB.view.template.match(/{{{[^}]*(?=}}})/g);
     var output = {};
+    var field;
     if(!fields) return false;
     for(var f = 0; f < fields.length; f++){
-      output[fields[f].substring(3)] = true;
+      field = fields[f].split(".");
+      if(field[0].substring(3) != modelName) continue;
+      output[field[1]] = true;
     }
     return output;
   }.call()
@@ -66,7 +69,7 @@ function DB(modelName, apiPath, templateSelector){
     })
   }
   DB.placeAll = function(){
-    return DB.model.index().always(function(response){
+    return DB.model.index.call(DB).always(function(response){
       for(var l = 0; l < response.length; l++){
         DB.place(response[l]);
       }

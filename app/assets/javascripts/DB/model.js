@@ -18,7 +18,7 @@ function DBModel(apiPath){
 
   DB.model = {
     index: function(){
-      return dbQuery("get")
+      return dbQuery.call(this, "get")
     }
   }
 

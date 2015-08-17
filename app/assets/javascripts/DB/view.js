@@ -11,7 +11,7 @@ function DBView(templateSelector){
     render: function(){
       var output = DB.view.template;
       for(var attribute in DB.fields){
-        output = output.replace(new RegExp("{{{" + attribute + "}}}", "g"), this.data[attribute] || "");
+        output = output.replace(new RegExp("{{{" + DB.modelName + "\." + attribute + "}}}", "g"), this.data[attribute] || "");
       }
       this.el = $(output);
       return output;

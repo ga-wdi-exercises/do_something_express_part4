@@ -12,17 +12,17 @@
   <body>
     <h1>Do Something</h1>
     <main id="lists">
-      <div class="list {{{status}}}">
-        <div><p>{{{id}}}</p></div>
-        <div><input id="list_{{{id}}}_title" type="text" value="{{{title}}}"/></div>
-        <ul>
+      <div class="list {{{list.status}}}">
+        <div><p>{{{list.id}}}</p></div>
+        <div><input id="list_{{{list.id}}}_title" type="text" value="{{{list.title}}}"/></div>
+        <ul id="tasks_{{{list.id}}}">
           <li class="task">
-            <textarea type="text"></textarea>
+            <textarea type="text">{{{task.content}}}</textarea>
           </li>
         </ul>
         <div><button type="button" class="create" onclick="List.create()">Create</button></div>
-        <div><button type="button" class="edit" onclick="List.edit({{{id}}})">Edit</button></div>
-        <div><button type="button" class="delete" onclick="List.delete({{{id}}})">Delete</button></div>
+        <div><button type="button" class="edit" onclick="List.edit({{{list.id}}})">Edit</button></div>
+        <div><button type="button" class="delete" onclick="List.delete({{{list.id}}})">Delete</button></div>
       </div>
     </main>
   </body>
