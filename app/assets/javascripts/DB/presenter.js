@@ -1,4 +1,4 @@
-function DB(modelName, apiPath, templateId){
+function DB(modelName, apiPath, templateSelector){
   var DB = {};
   DB.prototype = {
     params: function(){
@@ -12,7 +12,7 @@ function DB(modelName, apiPath, templateId){
       return output;
     }
   }
-  DBView.call(DB, templateId);
+  DBView.call(DB, templateSelector);
   DBModel.call(DB, apiPath);
 
   DB.all = {}

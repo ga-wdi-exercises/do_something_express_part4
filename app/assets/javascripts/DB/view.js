@@ -1,9 +1,9 @@
-function DBView(templateId){
+function DBView(templateSelector){
   var DB = this;
-  var templateElement = $(templateId);
+  var templateElement = $(templateSelector);
 
   DB.view = {
-    template: templateElement.html(),
+    template: templateElement[0].outerHTML,
     container: templateElement.parent()
   }
 
