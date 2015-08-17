@@ -92,6 +92,9 @@ input[type=text]{
   font-weight:bold;
   text-align:center;
 }
+textarea{
+  resize: vertical;
+}
 button{
   text-align:center;
   border-top-left-radius:0px;
