@@ -14,7 +14,7 @@ function error(message){
 module.exports = {
 
   all: function(request, response){
-    Task.findAll().then(function(db_response){
+    Task.findAll({order: "id"}).then(function(db_response){
       response.send(db_response);
     });
   },
@@ -23,7 +23,8 @@ module.exports = {
     Task.findAll({
       where: {
         listId: request.params.id
-      }
+      },
+      order: "id"
     }).then(function(db_response){
       response.send(db_response);
     });
