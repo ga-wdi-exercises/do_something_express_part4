@@ -13,36 +13,52 @@ function error(message){
 
 module.exports = {
 
+  all: function(request, response){
+    Task.findAll().then(function(db_response){
+      response.send(db_response);
+    });
+  },
+
   index: function(request, response){
     Task.findAll({
       where: {
         listId: request.params.id
       }
-    }).then(sendBack.bind(response));
+    }).then(function(db_response){
+      response.send(db_response);
+    });
   },
 
   create: function(request, response){
     Task.create({
       listId: request.params.id,
       content: request.body.content
-    }).then(sendBack.bind(response));
+    }).then(function(db_response){
+      response.send(db_response);
+    });
   },
 
   show: function(request, response){
-    Task.findById(request.params.taskId).then(sendBack.bind(response));
+    Task.findById(request.params.taskId).then(function(db_response){
+      response.send(db_response);
+    });
   },
 
   edit: function(request, response){
     Task.findById(request.params.taskId).then(function(task){
       if(!task) return error.call(response, "not found");
-      task.updateAttributes(request.body).then(sendBack.bind(response));
+      task.updateAttributes(request.body).then(function(db_response){
+        response.send(db_response);
+      });
     });
   },
 
   delete: function(request, response){
     Task.findById(request.params.taskId).then(function(task){
       if(!task) return error.call(response, "not found");
-      task.destroy().then(sendBack.bind(response));
+      task.destroy().then(function(db_response){
+        response.send(db_response);
+      });
     });
   }
 

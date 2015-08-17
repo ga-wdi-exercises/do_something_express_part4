@@ -4,26 +4,10 @@
     <title>Do Something</title>
     <link rel="stylesheet" href="/app/assets/stylesheets/application.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="/app/assets/javascripts/DB/model.js"></script>
-    <script src="/app/assets/javascripts/DB/view.js"></script>
-    <script src="/app/assets/javascripts/DB/presenter.js"></script>
     <script src="/app/assets/javascripts/application.js"></script>
   </head>
   <body>
     <h1>Do Something</h1>
-    <main id="lists">
-      <div class="list {{{list.status}}}">
-        <div><p>{{{list.id}}}</p></div>
-        <div><input id="list_{{{list.id}}}_title" type="text" value="{{{list.title}}}"/></div>
-        <ul id="tasks_{{{list.id}}}">
-          <li class="task">
-            <textarea type="text">{{{task.content}}}</textarea>
-          </li>
-        </ul>
-        <div><button type="button" class="create" onclick="List.create()">Create</button></div>
-        <div><button type="button" class="edit" onclick="List.edit({{{list.id}}})">Edit</button></div>
-        <div><button type="button" class="delete" onclick="List.delete({{{list.id}}})">Delete</button></div>
-      </div>
-    </main>
+    <main></main>
   </body>
 </html>

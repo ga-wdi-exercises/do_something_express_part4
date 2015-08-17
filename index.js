@@ -22,6 +22,7 @@ app.get("/lists/:id", listsController.show);
 app.patch("/lists/:id", listsController.edit);
 app.delete("/lists/:id", listsController.delete);
 
+app.get("/tasks", tasksController.all);
 app.get("/lists/:id/tasks", tasksController.index);
 app.post("/lists/:id/tasks", tasksController.create);
 app.get("/lists/:id/tasks/:taskId", tasksController.show);
