@@ -10,7 +10,8 @@
     <h1>Do Something</h1>
     <main id="lists">
       <div id="listTemplate">
-        <div class="list new">
+        <div class="list {{{status}}}">
+          <div><p>{{{id}}}</p></div>
           <div><input type="text" value="{{{title}}}"/></div>
           <ul>
             <li id="taskTemplate" class="task">

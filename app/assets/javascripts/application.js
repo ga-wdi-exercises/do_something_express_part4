@@ -20,7 +20,7 @@ $(document).ready(function(){
         container: container,
         data: {},
         fields: function(){
-          var fields = template.match(/{{{[^}]*}}}/);
+          var fields = template.match(/{{{[^}]*}}}/g);
           var output = {};
           var field = "";
           if(!fields) return false;
@@ -50,17 +50,34 @@ $(document).ready(function(){
           this.rendered = output;
           return output;
         },
+        refresh: function(){
+          this.el.empty();
+          this.el.html(this.render());
+        },
         append: function(){
           this.el = this.container.append(this.rendered);
         },
         prepend: function(){
           this.el = this.container.prepend(this.rendered);
+        },
+        remove: function(){
+          this.delete().always(function(response){
+            this.el.remove();
+            this.prototype.all.splice(this.prototype.all.indexOf(this, 1));
+          })
         }
       },
+      all: {},
       new: function(createdFrom){
         var object = Object.create(this.prototype);
         if(typeof createdFrom == "object"){
           object.data = createdFrom;
+          object.data.status = "current";
+        }else if(createdFrom == undefined){
+          object.data = {
+            status: "new",
+            id: "new"
+          }
         }
         object.render();
         return object;
@@ -71,42 +88,15 @@ $(document).ready(function(){
     }
   }
 
-  var Task = DBModel("tasks", "#taskTemplate");
+  // var Task = DBModel("tasks", "#taskTemplate");
   var List = DBModel("lists", "#listTemplate");
-  var lists = [];
   List.index().always(function(response){
     for(var l = 0; l < response.length; l++){
       var list = List.new(response[l]);
       list.append();
+      List.all[list.data.id] = list;
     }
-    List.new().prepend();
-  })
 
-  // $(lists).each(function(){
-  //   var list = $(this);
-  //   list.find("button").click(function(){
-  //     var title = list.find("input").val(),
-  //         id    = list.attr("id");
-  //     if(list.hasClass("pending")) return;
-  //     else list.addClass("pending");
-  //     if($(this).hasClass("delete")){
-  //       List.prototype.delete(id).always(function(response){
-  //         list.remove();
-  //       });
-  //     }else if(list.hasClass("new")){
-  //       List.prototype.create(title).always(function(response){
-  //         list.removeClass("pending new").addClass("current");
-  //         list.attr("id", response.id)
-  //         List.prototype.add();
-  //         console.dir(response);
-  //       })
-  //     }else if(list.hasClass("current")){
-  //       List.prototype.edit(id, title).always(function(response){
-  //         list.removeClass("pending");
-  //         console.dir(response);
-  //       })
-  //     }
-  //   });
-  // });
+  })
 
 });
