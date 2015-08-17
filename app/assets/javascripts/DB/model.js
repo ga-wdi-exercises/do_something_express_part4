@@ -1,35 +1,37 @@
-function DBModel(modelName){
+function DBModel(apiPath){
   var DB = this;
 
-  function dbQuery(method, urlParams, data){
-    var url = urlParams.join("/");
+  function dbQuery(method){
+    var urlParams = [apiPath];
+    var data = {};
+    if(["patch", "delete", "post"].indexOf(method) > -1){
+      if(method != "post") urlParams.push(this.data.id);
+      data = this.params.call(this);
+    }
     return $.ajax({
       method: method,
       contentType: "application/json",
-      url: url,
-      data: data ? JSON.stringify(data) : null
+      url: urlParams.join("/"),
+      data: JSON.stringify(data)
     })
   }
 
   DB.model = {
     index: function(){
-      return dbQuery("get", [modelName])
+      return dbQuery("get")
     }
   }
 
   DB.prototype.model = {
     data: {},
-    show: function(){
-      return dbQuery("get", [modelName, DB.data.id])
+    create: function(){
+      return dbQuery.call(this, "post")
     },
-    create: function(params){
-      return dbQuery("post", [modelName], params)
-    },
-    edit: function(params){
-      return dbQuery("patch", [modelName, DB.data.id], params)
+    edit: function(){
+      return dbQuery.call(this, "patch")
     },
     delete: function(){
-      return dbQuery("delete", [modelName, DB.data.id])
+      return dbQuery.call(this, "delete")
     }
   }
 

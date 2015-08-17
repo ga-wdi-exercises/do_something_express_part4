@@ -15,14 +15,17 @@
       <div id="listTemplate">
         <div class="list {{{status}}}">
           <div><p>{{{id}}}</p></div>
-          <div><input type="text" value="{{{title}}}"/></div>
+          <div><input id="list_{{{id}}}_title" type="text" value="{{{title}}}"/></div>
           <ul>
-            <li id="taskTemplate" class="task">
-              <textarea type="text"></textarea>
-            </li>
+            <div id="taskTemplate">
+              <li class="task">
+                <textarea type="text"></textarea>
+              </li>
+            </div>
           </ul>
-          <div><button type="button" class="edit" onclick="List.all({{{id}}}).model.edit()">Edit</button></div>
-          <div><button type="button" class="delete">Delete</button></div>
+          <div><button type="button" class="create" onclick="List.create()">Create</button></div>
+          <div><button type="button" class="edit" onclick="List.edit({{{id}}})">Edit</button></div>
+          <div><button type="button" class="delete" onclick="List.delete({{{id}}})">Delete</button></div>
         </div>
       </div>
     </main>

@@ -14,7 +14,7 @@ function error(message){
 module.exports = {
 
   index: function(request, response){
-    List.findAll().then(sendBack.bind(response));
+    List.findAll({order: "id"}).then(sendBack.bind(response));
   },
 
   create: function(request, response){
