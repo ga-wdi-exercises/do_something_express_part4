@@ -11,8 +11,13 @@ var listsController = require("./app/controllers/lists");
 var tasksController = require("./app/controllers/tasks");
 
 app.get("/", function(req, res){
-  //Shows all the routes
-  res.json([listsController.stack, tasksController.stack]);
+  //shows the routes
+  var raw = listsController.stack.concat(tasksController.stack);
+  var output = "<pre>";
+  for(var r = 0; r < raw.length; r++){
+    output += raw[r].route.stack[0].method + " " + raw[r].route.path + "\n";
+  }
+  res.send(output + "</pre>");
 });
 
 app.use("/", listsController);
