@@ -1,7 +1,12 @@
 # Do Something Part 3
 
-For tonight's homework, you'll be replacing the hard-coded List and Task objects
-with Sequelize models.
+For tonight's homework, you'll be replacing the hard-coded List and Task objects with Sequelize models.
+
+Don't worry about views for now!
+
+You can see a completed version here:
+
+https://lit-gorge-9598.herokuapp.com/
 
 To begin, take a look at how things are organized in the starter code on this master branch.
 
@@ -28,5 +33,3 @@ delete /tasks/:id
 get /lists/:listId/tasks
 post /lists/:listId/tasks
 ```
-
-Don't worry about views for now!
