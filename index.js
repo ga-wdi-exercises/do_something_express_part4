@@ -17,7 +17,7 @@ app.get("/", function(req, res){
   for(var r = 0; r < raw.length; r++){
     output += raw[r].route.stack[0].method + " " + raw[r].route.path + "\n";
   }
-  res.send(output + "</pre>");
+  res.send("This is just an API! No views yet. It supports these routes:\r" + output + "</pre>");
 });
 
 app.use("/", listsController);
