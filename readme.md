@@ -28,7 +28,7 @@ Take that code from the solution and refactor it to make it more object-oriented
 
 ## Option B
 
-See how many of the bonuses below you can reach. Take any approach you want to write the Javascript -- jQuery soup is allowed!
+Work on the goal below. Once you've completed it, see how many of the bonuses below you can reach, going in order (or not). Take any approach you want to write the Javascript -- jQuery soup is allowed!
 
 ### Goal:
 
