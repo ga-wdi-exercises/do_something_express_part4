@@ -5,31 +5,23 @@ var Task = DB.models.Task
 var lists = [
   {title:"Errands"},
   {title:"Things that are better than WDI"},
-  {title:"WDI To-Dos"}
+  {title:"WDI To-Dos"},
+  {title:"Things that are awesome"}
 ]
 
 var tasks = [
-  {body:"Water the plants", completed: false},
-  {body:"Feed the cat", completed: true},
-  {body:"Send the WDI instructors a nice card", completed: false}
+  {content:"Water the plants", listId: 1},
+  {content:"Feed the cat", listId: 1},
+  {content:"Nothing", listId: 2},
+  {content:"Send the WDI instructors a nice card", listId: 3},
+  {content:"Me", listId: 4},
+  {content:"Self-validation", listId:4}
 ]
 
 List.bulkCreate(lists).then(function(){
-  return DB.models.List.findAll()
-})
-.then(function(dblists){
-  var l, list, t, task, output = [];
-  for(l = 0; l < lists.length; l++){
-    list = lists[l];
-    for(t = 0; t < tasks.length; t++){
-      task = tasks[t];
-      task.ListId = list.id;
-      output.push(task);
-    }
-  }
-  return DB.models.Task.bulkCreate(output);
+  return Task.bulkCreate(tasks)
 })
 .then(function(){
-  console.log("Seeded successfully!");
+  console.log("Seeded successfully! kthxbye");
   process.exit();
 });
