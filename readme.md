@@ -1,7 +1,11 @@
 # Do Something Part 4
 
-For tonight's homework, you will add AJAX to your front end to handle request. i.e. You'll convert
+For tonight's homework, you will add AJAX to your front end to handle request.
+
+i.e. You'll convert
 this application to a single-page application!
+
+See how many of the checkpoints below you can reach. Remember: no-one's counting except you!
 
 ### Checkpoint 1:
 
