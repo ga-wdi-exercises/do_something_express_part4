@@ -5,6 +5,17 @@ this application to a single-page application.
 
 The **only** file you **need** to do anything with is `app/assets/javascripts/application.js`. The HTML, CSS, and everything else has been provided for you.
 
+Remember:
+
+```
+dropdb do_something
+createdb do_something
+npm install
+node config/migrate.js
+node config/seeds.js
+nodemon index.js
+```
+
 ## Option A
 
 The provided solution is vaguely-object-oriented "jQuery soup". You can see that it's not very DRY: this line shows up 5 times:
