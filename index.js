@@ -13,16 +13,20 @@ var tasksController = require("./app/controllers/tasks");
 app.get("/", function(req, res){
   //shows the routes
   var raw = listsController.stack.concat(tasksController.stack);
-  var output = "<pre>";
+  var output = "";
   for(var r = 0; r < raw.length; r++){
     output += raw[r].route.stack[0].method + " " + raw[r].route.path + "\n";
   }
-  res.send(output + "</pre>");
+  res.send("<pre>This is just an API! No views yet. It supports these routes:\r" + output + "</pre>");
 });
 
 app.use("/", listsController);
 app.use("/", tasksController);
 
+// The process.env.PORT is for deployment to Heroku. Don't worry about it! You can have the usual:
+/*
 app.listen(3000, function(){
+*/
+app.listen(process.env.PORT || 3000, function(){
   console.log("Listening on port 3000");
 });

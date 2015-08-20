@@ -1,19 +1,35 @@
-# Do Something Part 4
+# Do Something Part 3
 
-For tonight's homework, you will add AJAX to your front end to handle each of the requests. i.e. converting
-this application to a single page application
+For tonight's homework, you'll be replacing the hard-coded List and Task objects with Sequelize models.
 
-### Try starting small:
+Don't worry about views for now!
 
-- When the user clicks a delete button,
-  - submit a `delete` request to remove a list
-  - hide that element if the AJAX request responds successfully.
+You can see a completed version here:
 
-### And then:
+https://lit-gorge-9598.herokuapp.com/
 
-- Implement each of the CRUD actions using AJAX only.
+To begin, take a look at how things are organized in the starter code on this master branch.
 
-### And finally:
+Then:
 
+- Create a `config/connection.js` file which connects to the DB.
+- Create Sequelize models for both Lists and Tasks.
+- Update the rest of your application to reference these models.
 
-- use `history.pushState` or `window.location.hash` to update the URL to reflect the "state of the application"
+By the end, you should be able to use Postman, Cocoa, or plain old AJAX to perform all CRUD functions on both Lists and Tasks.
+
+Your app should have the following routes:
+
+```
+get /lists
+post /lists
+get /lists/:id
+put /lists/:id
+delete /lists/:id
+get /tasks
+get /tasks/:id
+put /tasks/:id
+delete /tasks/:id
+get /lists/:listId/tasks
+post /lists/:listId/tasks
+```
