@@ -1,6 +1,6 @@
 # Do Something Part 4
 
-For tonight's homework, add AJAX to your front end to handle request. That is: try to convert
+For tonight's homework, add AJAX to your front-end to handle requests. That is: try to convert
 this application to a single-page application.
 
 The **only** file you **need** to do anything with is `app/assets/javascripts/application.js`. The HTML, CSS, and everything else has been provided for you.
