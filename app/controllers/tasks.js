@@ -16,13 +16,13 @@ router.get("/tasks", function(req, res){
 });
 
 router.get("/tasks/:id", function(req, res){
-  Task.findById(req.params.taskId).then(function(task){
+  Task.findById(req.params.id).then(function(task){
     res.json(task);
   });
 });
 
 router.put("/tasks/:id", function(req, res){
-  Task.findById(req.params.taskId).then(function(task){
+  Task.findById(req.params.id).then(function(task){
     if(!task) return error(res, "not found");
     task.updateAttributes(req.body).then(function(task){
       res.json(task);
@@ -31,7 +31,7 @@ router.put("/tasks/:id", function(req, res){
 });
 
 router.delete("/tasks/:id", function(req, res){
-  Task.findById(req.params.taskId).then(function(task){
+  Task.findById(req.params.id).then(function(task){
     if(!task) return error(res, "not found");
     task.destroy().then(function(db_res){
       res.json(db_res);

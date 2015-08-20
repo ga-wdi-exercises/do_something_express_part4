@@ -81,7 +81,7 @@ $(document).ready(function(){
       var params = {title: $(this).siblings("[name=title]").val()};
       var id = $(this).siblings("[name=id]").val();
       $.ajax({
-        method: "patch",
+        method: "put",
         contentType: "application/json",
         url: "/lists/" + id,
         data: JSON.stringify(params)
@@ -110,7 +110,7 @@ $(document).ready(function(){
       $.ajax({
         method: "post",
         contentType: "application/json",
-        url: "/lists/" + listId + "/tasks/",
+        url: "/lists/" + listId + "/tasks",
         data: JSON.stringify(params)
       }).always(function(){
         location.reload();
@@ -123,9 +123,9 @@ $(document).ready(function(){
         content: $(this).siblings("[name=content]").val()
       };
       $.ajax({
-        method: "patch",
+        method: "put",
         contentType: "application/json",
-        url: "/lists/" + listId + "/tasks/" + id,
+        url: "/tasks/" + id,
         data: JSON.stringify(params)
       }).always(function(){
         location.reload();
@@ -137,7 +137,7 @@ $(document).ready(function(){
       $.ajax({
         method: "delete",
         contentType: "application/json",
-        url: "/lists/" + listId + "/tasks/" + id,
+        url: "/tasks/" + id
       }).always(function(){
         location.reload();
       });
