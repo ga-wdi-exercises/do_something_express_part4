@@ -5,12 +5,16 @@ var bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/", express.static(path.join(__dirname + "/public")));
+app.use("/", express.static(path.join(__dirname + "/app/assets")));
 
 var listsController = require("./app/controllers/lists");
 var tasksController = require("./app/controllers/tasks");
 
-app.get("/", function(req, res){
+app.get("/", function(request, response){
+  response.sendFile(__dirname + "/app/views/index.html");
+});
+
+app.get("/routes", function(req, res){
   //shows the routes
   var raw = listsController.stack.concat(tasksController.stack);
   var output = "";
